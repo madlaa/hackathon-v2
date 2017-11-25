@@ -27,7 +27,7 @@ int beats[] = { 2,3,1,2,2,2,2,2,2,2,2,2,2,6,2,3,1,2,2,2,2,2,2,2,2,2,2,6,2 };
 */
 int tempo = 150;  // The tempo is how fast to play the song (beats per second).
 
-void setup()
+void setup(void)
 {
   servo1.attach(9, 900, 2100);
   Serial.begin(9600);
@@ -47,7 +47,7 @@ void setup()
 }
 
 
-void loop()
+void loop(void)
 {
   button1State = digitalRead(button1Pin);
   button2State = digitalRead(button2Pin);
@@ -85,7 +85,7 @@ void play_note(char note, int duration)
   }
 }
 
-void play_chirstmas_song()
+void play_chirstmas_song(void)
 {
   for (int i = 0; i < length; i++) {
     if (notes[i] == ' ')
@@ -97,7 +97,7 @@ void play_chirstmas_song()
   }
 }
 
-void continuous_servo( )
+void continuous_servo(void)
 {
   int speed;
   angle_speed = 180; //Max speed on servo
@@ -112,7 +112,7 @@ void continuous_servo( )
   servo1.write(STOP_SERVO);
 }
 
-void pour_milk()
+void pour_milk(void)
 {
     digitalWrite(pumpPin, HIGH);
     delay(5000);
