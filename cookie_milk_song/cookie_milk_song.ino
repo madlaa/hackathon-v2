@@ -52,20 +52,18 @@ void loop()
   button1State = digitalRead(button1Pin);
   button2State = digitalRead(button2Pin);
 
-  if (((button1State == LOW) && (button2State == HIGH)) || ((button1State == HIGH) && (button2State == LOW)))
-  {
+  if (((button1State == LOW) && (button2State == HIGH)) || ((button1State == HIGH) && (button2State == LOW))) {
     digitalWrite(ledPin, HIGH);  // turn the LED on
     continuous_servo(); // Dispense cookie.
     pour_milk(); // Dispense milk.
     play_chirstmas_song(); // Play song
-  }
-  else
-  {
+  } else {
     digitalWrite(ledPin, LOW);  // turn the LED off
   }
 }
 
-void play_tone(int tone, int duration) {
+void play_tone(int tone, int duration)
+{
   for (long i = 0; i < duration * 1000L; i += tone * 2) {
     digitalWrite(buzzerPin, HIGH);
     delayMicroseconds(tone);
@@ -74,7 +72,8 @@ void play_tone(int tone, int duration) {
   }
 }
 
-void play_note(char note, int duration) {
+void play_note(char note, int duration)
+{
   char names[] = { 'c', 'd', 'e', 'f', 'g', 'a', 'b', 'C' };
   int tones[] = { 1915, 1700, 1519, 1432, 1275, 1136, 1014, 956 };
 
@@ -86,19 +85,20 @@ void play_note(char note, int duration) {
   }
 }
 
-void play_chirstmas_song(){
+void play_chirstmas_song()
+{
   for (int i = 0; i < length; i++) {
-    if (notes[i] == ' ') {
+    if (notes[i] == ' ')
       delay(beats[i] * tempo); // rest
-    } else {
+    else
       play_note(notes[i], beats[i] * tempo);
-    }
     // pause between notes
     delay(tempo / 2);
   }
 }
 
-void continuous_servo( ){
+void continuous_servo( )
+{
   int speed;
   angle_speed = 180; //Max speed on servo
   Serial.print("Setting angle_speed to ");
@@ -112,7 +112,8 @@ void continuous_servo( ){
   servo1.write(STOP_SERVO);
 }
 
-void pour_milk(){
+void pour_milk()
+{
     digitalWrite(pumpPin, HIGH);
     delay(5000);
     digitalWrite(pumpPin, LOW);
