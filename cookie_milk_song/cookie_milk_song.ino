@@ -54,8 +54,9 @@ void loop(void)
 
   if (((button1State == LOW) && (button2State == HIGH)) || ((button1State == HIGH) && (button2State == LOW))) {
     digitalWrite(ledPin, HIGH);  // turn the LED on
+    pour_milk_start();
     continuous_servo(); // Dispense cookie.
-    pour_milk(); // Dispense milk.
+    pour_milk_stop();
     play_chirstmas_song(); // Play song
   } else {
     digitalWrite(ledPin, LOW);  // turn the LED off
@@ -112,9 +113,13 @@ void continuous_servo(void)
   servo1.write(STOP_SERVO);
 }
 
-void pour_milk(void)
+void pour_milk_start(void)
 {
-    digitalWrite(pumpPin, HIGH);
-    delay(5000);
-    digitalWrite(pumpPin, LOW);
+  digitalWrite(pumpPin, HIGH);
 }
+
+void pour_milk_stop(void)
+{
+  digitalWrite(pumpPin, LOW);
+}
+
