@@ -15,10 +15,16 @@ const int pumpPin = 11;
 const int ledPin =  13;
 
 int button1State, button2State;  // variables to hold the pushbutton states
-
+//Generic song
+int length = 15; // the number of notes
+char notes[] = "ccggaagffeeddc "; // a space represents a rest
+int beats[] = { 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 4 };
+/*
+// Christmas song
 int length = 29;
 char notes[] = "faagfvvagaCCbCaDCvagfeagffef ";//Chirstmas song
 int beats[] = { 2,3,1,2,2,2,2,2,2,2,2,2,2,6,2,3,1,2,2,2,2,2,2,2,2,2,2,6,2 }; 
+*/
 int tempo = 150;  // The tempo is how fast to play the song (beats per second).
 
 void setup()
@@ -49,9 +55,9 @@ void loop()
   if (((button1State == LOW) && (button2State == HIGH)) || ((button1State == HIGH) && (button2State == LOW)))
   {
     digitalWrite(ledPin, HIGH);  // turn the LED on
-    //play_chirstmas_song();
-    //continuous_servo(); // Dispense cookie.
+    continuous_servo(); // Dispense cookie.
     pour_milk(); // Dispense milk.
+    play_chirstmas_song(); // Play song
   }
   else
   {
