@@ -23,7 +23,7 @@ int beats[] = { 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 4 };
 // Christmas song
 int length = 29;
 char notes[] = "faagfvvagaCCbCaDCvagfeagffef ";//Chirstmas song
-int beats[] = { 2,3,1,2,2,2,2,2,2,2,2,2,2,6,2,3,1,2,2,2,2,2,2,2,2,2,2,6,2 }; 
+int beats[] = { 2,3,1,2,2,2,2,2,2,2,2,2,2,6,2,3,1,2,2,2,2,2,2,2,2,2,2,6,2 };
 */
 int tempo = 150;  // The tempo is how fast to play the song (beats per second).
 
@@ -40,7 +40,7 @@ void setup()
   pinMode(ledPin, OUTPUT);
   pinMode(buzzerPin, OUTPUT);  // sets the buzzer pin as an OUTPUT
   pinMode(pumpPin, OUTPUT); // sets the pump pin as en OUTPUT
-  
+
   Serial.println("Welcome to the hackathon v2 christmas special!");
   Serial.println("If we identify santa though visual recognition he will receive a treat.");
   Serial.println();  // Print a blank line
@@ -48,7 +48,7 @@ void setup()
 
 
 void loop()
-{ 
+{
   button1State = digitalRead(button1Pin);
   button2State = digitalRead(button2Pin);
 
@@ -94,7 +94,7 @@ void play_chirstmas_song(){
       play_note(notes[i], beats[i] * tempo);
     }
     // pause between notes
-    delay(tempo / 2); 
+    delay(tempo / 2);
   }
 }
 
@@ -103,7 +103,7 @@ void continuous_servo( ){
   angle_speed = 180; //Max speed on servo
   Serial.print("Setting angle_speed to ");
   Serial.println(angle_speed);
-  
+
   servo1.write(angle_speed);   // Clockwise movement from 110 -> 180. Deadzone from 91 -> 110
   delay(4200);    // Pause to get it time to move. Moves 1,5cm/sec.
   servo1.write(180-angle_speed);     // Countercockwise movement from 0->89.
